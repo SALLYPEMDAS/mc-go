@@ -2,12 +2,13 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
+	"os"
+
 	"github.com/df-mc/dragonfly/server"
 	"github.com/df-mc/dragonfly/server/player/chat"
 	"github.com/pelletier/go-toml"
 	"github.com/sirupsen/logrus"
-	"io/ioutil"
-	"os"
 )
 
 func main() {
@@ -29,7 +30,8 @@ func main() {
 	}
 
 	for {
-		if _, err := srv.Accept(); err != nil {
+		if p, err := srv.Accept(); err != nil {
+			p.ShowCoordinates()
 			return
 		}
 	}
