@@ -31,8 +31,9 @@ func main() {
 
 	for {
 		if p, err := srv.Accept(); err != nil {
-			p.ShowCoordinates()
 			return
+		} else {
+			p.ShowCoordinates()
 		}
 	}
 }
